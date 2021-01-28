@@ -1,6 +1,7 @@
 import {Configuration , webpack} from 'webpack';
 import {fs as memfs} from 'memfs';
 import {resolve} from 'path';
+import * as HTMLWebpackPlugin from 'html-webpack-plugin'
 
 
 const confCommon: Configuration = {
@@ -28,18 +29,34 @@ const confServer = {
 
 const confClient = {
   ...confCommon,
-  entry: './client/pages/index.tsx',
+  entry: {
+    index: {
+      import: './client/pages/index.tsx',
+    },
+  },
   output: {
     path: resolve('build', 'public'),
     filename: '[name].js',
   },
-  target: 'node',
+  plugins: [
+    new HTMLWebpackPlugin({
+      filename: 'index.html',
+      chunks: ['index'],
+      inject: 'body',
+    }),
+  ],
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
-
+        options: {
+          compilerOptions: {
+            target: 'ES5',
+            jsx: 'react',
+            module: 'ESNext'
+          }
+        },
       }
     ],
   },
