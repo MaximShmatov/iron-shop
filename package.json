@@ -5,7 +5,6 @@
   "license": "ISC",
   "author": "Maxim Shmatov",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "ts-node-dev scripts/dev.ts",
     "start": "node build/server.js",

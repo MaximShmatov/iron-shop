@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "target": "ES5",
-    "jsx": "react",
-    "module": "ESNext"
-  }
-}

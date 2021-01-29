@@ -1,33 +1,50 @@
+import * as HTMLWebpackPlugin from 'html-webpack-plugin';
+import * as webpackNodeExternals from 'webpack-node-externals';
+import * as CopyWebpackPlugin from 'copy-webpack-plugin';
+import * as cluster from 'cluster';
 import {Configuration , webpack} from 'webpack';
-import {fs as memfs} from 'memfs';
+// import {fs as memfs} from 'memfs';
 import {resolve} from 'path';
-import * as HTMLWebpackPlugin from 'html-webpack-plugin'
-
 
 const confCommon: Configuration = {
   mode: 'development',
   context: resolve('src'),
 }
 
-const confServer = {
+const confServer: Configuration = {
   ...confCommon,
   entry: './main.ts',
   output: {
     path: resolve('build'),
-    filename: '[name].js',
+    filename: 'server.js',
+  },
+  experiments: {
+    outputModule: true,
   },
   target: 'node',
+  externals: [
+    webpackNodeExternals(),
+  ],
+  resolve: {
+    extensions: ['.ts', '.js'],
+    enforceExtension: false,
+  },
   module: {
     rules: [
       {
         test: /\.ts?$/,
         loader: 'ts-loader',
+        options: {
+          compilerOptions: {
+            target: 'ESNext',
+          },
+        },
       }
     ],
   },
 }
 
-const confClient = {
+const confClient: Configuration = {
   ...confCommon,
   entry: {
     index: {
@@ -36,13 +53,19 @@ const confClient = {
   },
   output: {
     path: resolve('build', 'public'),
-    filename: '[name].js',
+    filename: 'js/[name].js',
   },
   plugins: [
     new HTMLWebpackPlugin({
+      template: './client/templates/index.html',
       filename: 'index.html',
       chunks: ['index'],
       inject: 'body',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {from: resolve('static')},
+      ]
     }),
   ],
   module: {
@@ -52,7 +75,7 @@ const confClient = {
         loader: 'ts-loader',
         options: {
           compilerOptions: {
-            target: 'ES5',
+            target: 'ESNext',
             jsx: 'react',
             module: 'ESNext'
           }
@@ -62,6 +85,7 @@ const confClient = {
   },
 }
 
+cluster.setupMaster({exec: './build/server.js'});
 const compiler = webpack([confServer, confClient]);
 compiler.watch({aggregateTimeout: 1000}, (err, stats) => {
   if (stats) {
@@ -75,4 +99,5 @@ compiler.watch({aggregateTimeout: 1000}, (err, stats) => {
     else if (stats.hasWarnings()) console.warn(info.warnings);
     else console.log(stats.toString({colors: true}))
   }
+  cluster.disconnect(() => {cluster.fork()});
 });
