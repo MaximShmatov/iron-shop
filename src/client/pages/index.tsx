@@ -1,37 +1,10 @@
 import * as React from 'react';
-import {useState} from 'react';
-
 import * as ReactDOM from 'react-dom';
+import About from '../components/about';
 
-const styles = {
-  display: 'block',
-  width: '300px',
-  height: '40px',
-  backgroundColor: 'red',
-}
-
-function Index() {
-  const [state, setState] = useState(0);
-  const handleButtonClick = () => {
-    setState(state + 1)
-  }
-  const str = 'Hello World';
-  return (
-    <div>
-      <h1 style={styles}>{str + state}</h1>
-      <button
-        type="button"
-        onClick={handleButtonClick}
-      >
-        Ping
-      </button>
-    </div>
-  );
-}
-ReactDOM.render(
+ReactDOM.hydrate(
   <React.StrictMode>
-    <Index />
+    <About />
   </React.StrictMode>,
   document.getElementById('root')
 );
-export default Index;

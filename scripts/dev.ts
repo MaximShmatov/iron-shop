@@ -2,33 +2,33 @@ import * as HTMLWebpackPlugin from 'html-webpack-plugin';
 import * as webpackNodeExternals from 'webpack-node-externals';
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
 import * as cluster from 'cluster';
-import {Configuration , webpack} from 'webpack';
-// import {fs as memfs} from 'memfs';
+import * as webpack from 'webpack';
+import {fs as memfs} from 'memfs';
 import {resolve} from 'path';
 
-const confCommon: Configuration = {
+const confCommon: webpack.Configuration = {
   mode: 'development',
   context: resolve('src'),
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    enforceExtension: false,
+  },
+  target: 'node',
+  experiments: {
+    outputModule: true,
+  },
 }
 
-const confServer: Configuration = {
+const confServer: webpack.Configuration = {
   ...confCommon,
   entry: './main.ts',
   output: {
     path: resolve('build'),
     filename: 'server.js',
   },
-  experiments: {
-    outputModule: true,
-  },
-  target: 'node',
   externals: [
     webpackNodeExternals(),
   ],
-  resolve: {
-    extensions: ['.ts', '.js'],
-    enforceExtension: false,
-  },
   module: {
     rules: [
       {
@@ -39,7 +39,7 @@ const confServer: Configuration = {
   },
 }
 
-const confClient: Configuration = {
+const confClient: webpack.Configuration = {
   ...confCommon,
   entry: {
     react: ['react', 'react-dom'],
@@ -64,26 +64,38 @@ const confClient: Configuration = {
         {from: resolve('static')},
       ]
     }),
+    // new SSReact(),
   ],
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: 'ts-loader',
-        options: {
-          compilerOptions: {
-            target: 'ESNext',
-            jsx: 'react',
-            module: 'ESNext'
+        use: [
+          {
+            loader: resolve('scripts', 'reactRender.tsx'),
+            options: {
+              exclude: ['react'],
+            },
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              compilerOptions: {
+                target: 'ESNext',
+                jsx: 'react',
+                module: 'ESNext'
+              }
+            },
           }
-        },
+        ],
       }
     ],
   },
 }
 
 cluster.setupMaster({exec: './build/server.js'});
-const compiler = webpack([confServer, confClient]);
+const compiler = webpack.webpack([confServer, confClient]);
+
 compiler.watch({aggregateTimeout: 1000}, (err, stats) => {
   if (stats) {
     if (err) {
@@ -96,6 +108,9 @@ compiler.watch({aggregateTimeout: 1000}, (err, stats) => {
     else if (stats.hasWarnings()) console.warn(info.warnings);
     else console.log(stats.toString({colors: true}))
   }
-  cluster.disconnect(() => {cluster.fork()});
-  console.log(process.env.NODE_ENV)
+  cluster.disconnect(() => {
+    cluster.fork()
+  });
+  // console.log(process.env.NODE_ENV)
 });
+
