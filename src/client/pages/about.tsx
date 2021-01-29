@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {useState} from 'react';
 
-import * as ReactDOM from 'react-dom';
-
 const styles = {
   display: 'block',
   width: '300px',
@@ -10,11 +8,12 @@ const styles = {
   backgroundColor: 'red',
 }
 
-function Index() {
+export default function About() {
   const [state, setState] = useState(0);
   const handleButtonClick = () => {
     setState(state + 1)
   }
+  console.log('react 1');
   const str = 'Hello World';
   return (
     <div>
@@ -28,10 +27,3 @@ function Index() {
     </div>
   );
 }
-ReactDOM.render(
-  <React.StrictMode>
-    <Index />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-export default Index;

@@ -4,6 +4,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strict": true,
+    "target": "ESNext",
     "moduleResolution": "Node",
     "jsx": "react"
   }

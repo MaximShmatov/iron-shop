@@ -13,6 +13,6 @@ export class AppController {
 
   @Get( '/get')
   getIndexPage(@Res() res: Response) {
-    res.send('__dirname');
+    res.send('__dirname1');
   }
 }

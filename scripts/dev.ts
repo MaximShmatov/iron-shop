@@ -34,11 +34,6 @@ const confServer: Configuration = {
       {
         test: /\.ts?$/,
         loader: 'ts-loader',
-        options: {
-          compilerOptions: {
-            target: 'ESNext',
-          },
-        },
       }
     ],
   },
@@ -47,8 +42,10 @@ const confServer: Configuration = {
 const confClient: Configuration = {
   ...confCommon,
   entry: {
+    react: ['react', 'react-dom'],
     index: {
       import: './client/pages/index.tsx',
+      dependOn: 'react',
     },
   },
   output: {
@@ -59,7 +56,7 @@ const confClient: Configuration = {
     new HTMLWebpackPlugin({
       template: './client/templates/index.html',
       filename: 'index.html',
-      chunks: ['index'],
+      chunks: ['index', 'react'],
       inject: 'body',
     }),
     new CopyWebpackPlugin({
@@ -100,4 +97,5 @@ compiler.watch({aggregateTimeout: 1000}, (err, stats) => {
     else console.log(stats.toString({colors: true}))
   }
   cluster.disconnect(() => {cluster.fork()});
+  console.log(process.env.NODE_ENV)
 });
