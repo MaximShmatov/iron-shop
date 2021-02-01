@@ -1,6 +1,6 @@
 import { Controller, Get, Res } from '@nestjs/common';
 import { AppService } from './app.service';
-import { Response } from 'express';
+import * as fs from 'fs';
 
 @Controller()
 export class AppController {
@@ -12,7 +12,7 @@ export class AppController {
   }
 
   @Get( '/get')
-  getIndexPage(@Res() res: Response) {
-    res.send('__dirname1');
+  getIndexPage() {
+    return 'sdsdas' // fs.readFileSync('build/public/index.html', 'utf-8');
   }
 }

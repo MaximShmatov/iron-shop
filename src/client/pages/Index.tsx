@@ -1,9 +1,10 @@
 import * as React from 'react';
+import About from '../components/About';
 
-export default function Layout(children: React.Component) {
+export default function Index() {
   return (
     <React.StrictMode>
-      {children}
+      <About/>
     </React.StrictMode>
   );
 }
