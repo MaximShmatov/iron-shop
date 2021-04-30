@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
     "module": "CommonJS",
+    "sourceMap": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strict": true,
     "target": "ESNext",
     "moduleResolution": "Node",
-    "jsx": "react"
+    "jsx": "react-jsx"
+  },
+  "ts-node": {
+    "transpileOnly": true
   }
 }

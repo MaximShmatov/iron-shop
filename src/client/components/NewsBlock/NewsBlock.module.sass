@@ -1,0 +1,35 @@
+.newsBlock
+  display: flex
+  justify-content: space-around
+  align-items: center
+  flex-wrap: wrap
+  padding: 1rem
+  @media (min-width: 746px)
+    flex-wrap: nowrap
+
+.image
+  max-width: 260px
+
+.newsTitle
+  flex-grow: 1
+  max-width: 60rem
+  text-align: center
+  padding: 1rem
+
+.source
+  display: flex
+  justify-content: space-between
+  min-width: 14rem
+  flex-grow: 1
+  @media (min-width: 746px)
+    flex-direction: column
+    align-self: stretch
+    align-items: flex-end
+    flex-grow: inherit
+
+.sourceDate
+  font-weight: bold
+  color: black
+
+.sourceName
+  padding-left: 1rem
