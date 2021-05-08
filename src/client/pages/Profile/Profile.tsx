@@ -10,7 +10,7 @@ export default function Profile() {
     role: 'Admin',
     phone: '+7 888 444 40 10',
     email: 'admin@qex.ru',
-    imgLink: 'img/profile/admin.png',
+    imgLink: 'img/profile.png',
     imgAlt: 'Admin Icon',
   };
 

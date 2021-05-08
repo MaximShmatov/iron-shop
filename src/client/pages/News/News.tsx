@@ -11,17 +11,17 @@ export default function News() {
   const dispatch = useDispatch();
   const news = useSelector(({ news }) => news.newsList)
 
-  if (!news.length) {
-    fetchTopHeadlines('ru')
-      .then((data) => {
-        if (data.status === 'ok') {
-          dispatch(setNewsList(data.articles));
-        } else {
-          dispatch(setMessage(`${data.status}: limit reached...`));
-        }
-      })
-      .catch((error) => dispatch(setMessage(error.toString())));
-  }
+  // if (!news.length) {
+  //   fetchTopHeadlines('ru')
+  //     .then((data) => {
+  //       if (data.status === 'ok') {
+  //         dispatch(setNewsList(data.articles));
+  //       } else {
+  //         dispatch(setMessage(`${data.status}: limit reached...`));
+  //       }
+  //     })
+  //     .catch((error) => dispatch(setMessage(error.toString())));
+  // }
 
   const handleFormSubmit = (keyword: string) => {
     if (keyword !== '') {
@@ -30,7 +30,7 @@ export default function News() {
           if (data.status === 'ok') {
             dispatch(setNewsList(data.articles));
           } else {
-            dispatch(setMessage(`${data.status}: limit reached...`));
+            dispatch(setMessage(`${data.status}: Limit reached...`));
           }
         })
         .catch((error) => dispatch(setMessage(error.toString())));

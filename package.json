@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "development": "ts-node-dev --watch /scripts/ scripts/dev.ts ",
-    "start": "ts-node scripts/dev.ts",
+    "start": "ts-node scripts/run.ts",
     "build": "",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -47,11 +47,13 @@
   "dependencies": {
     "@nestjs/common": "^7.6.5",
     "@nestjs/core": "^7.6.5",
+    "@nestjs/microservices": "^7.6.15",
     "@nestjs/platform-express": "^7.6.5",
     "@nestjs/serve-static": "^2.1.4",
     "@nestjs/swagger": "^4.7.12",
     "@reduxjs/toolkit": "^1.5.1",
     "@types/react-router-dom": "^5.1.7",
+    "node-fetch": "^2.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.4",

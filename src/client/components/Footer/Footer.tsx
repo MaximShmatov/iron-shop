@@ -1,24 +1,24 @@
 import styles from './Footer.module.sass';
 
-export function Footer() {
-  const iconsData = [
-    {
-      src: 'img/footer/twitter.png',
-      alt: 'twitter',
-      link: 'http://twitter.com',
-    },
-    {
-      src: 'img/footer/facebook.png',
-      alt: 'facebook',
-      link: 'http://facebook.com',
-    },
-    {
-      src: 'img/footer/instagram.png',
-      alt: 'instagram',
-      link: 'http://instagram.com',
-    }
-  ]
+const iconsData = [
+  {
+    src: 'img/twitter.png',
+    alt: 'twitter',
+    link: 'http://twitter.com',
+  },
+  {
+    src: 'img/facebook.png',
+    alt: 'facebook',
+    link: 'http://facebook.com',
+  },
+  {
+    src: 'img/instagram.png',
+    alt: 'instagram',
+    link: 'http://instagram.com',
+  }
+]
 
+export function Footer() {
   return (
     <footer className={styles.footer}>
       <span className={styles.caption}>

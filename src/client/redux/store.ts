@@ -1,16 +1,21 @@
-import { configureStore } from '@reduxjs/toolkit';
+import {configureStore} from '@reduxjs/toolkit';
 import snackbar from './snackbarSlice';
 import auth from './authSlice';
 import news from './newsSlice';
 
-export const store = configureStore({
+
+const rootReducer = {
   reducer: {
     snackbar,
     auth,
     news,
   },
-});
+};
+const store = configureStore(rootReducer);
 
 declare module 'react-redux' {
-  interface DefaultRootState extends ReturnType<typeof store.getState> {}
+  interface DefaultRootState extends ReturnType<typeof store.getState> {
+  }
 }
+
+export {store, rootReducer};
