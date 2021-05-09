@@ -8,8 +8,5 @@
     "target": "ESNext",
     "moduleResolution": "Node",
     "jsx": "react-jsx"
-  },
-  "ts-node": {
-    "transpileOnly": true
   }
 }

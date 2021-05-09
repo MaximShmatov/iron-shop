@@ -3,10 +3,10 @@ import styles from './Header.module.sass';
 
 
 const links = [
-  {path: '/', caption: 'Home'},
-  {path: '/news', caption: 'News'},
-  {path: '/profile', caption: 'Profile'},
-  {path: '/signin', caption: 'Sign In'},
+  {path: '/index.html', caption: 'Home'},
+  {path: '/news.html', caption: 'News'},
+  {path: '/profile.html', caption: 'Profile'},
+  {path: '/signin.html', caption: 'Sign In'},
 ];
 
 export function Header() {

@@ -24,7 +24,7 @@ export function AuthForm({ className }: {className: string}) {
     const isTrueName = (localStorage.getItem('name') === name);
     const isTruePassword = (localStorage.getItem('password') === name);
     if (isTrueName && isTruePassword) {
-      history.push('/profile');
+      history.push('/profile.html');
       dispatch(setIsAuth(true));
     } else {
       dispatch(failAuthIncrement(1));

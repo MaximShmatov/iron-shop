@@ -75,7 +75,6 @@ export function LineGraphSVG({from, to, maxX, maxY, scaleSize}: TLineGraphSVGPro
         </marker>
       </defs>
       <polyline
-        id={'scale'}
         points={
           `${offsetGraph},0 ` +
           `${offsetGraph},${heightViewBox - offsetGraph} ` +

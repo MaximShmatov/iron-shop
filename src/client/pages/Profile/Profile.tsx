@@ -46,6 +46,6 @@ export default function Profile() {
       </table>
     </main>
   ) : (
-    <Redirect to="/signin" />
+    <Redirect to="/signin.html" />
   );
 }
