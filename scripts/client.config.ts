@@ -9,6 +9,7 @@ import {commonConfig} from './common.config';
 
 export function getConfig(mode: string) {
   const isDevMode = (mode === 'development');
+  const reactLib = isDevMode ? 'development' : 'production.min';
   return {
     ...commonConfig,
     mode,
@@ -85,17 +86,11 @@ export function getConfig(mode: string) {
             from: '**/img/*',
             to: 'img/[name].[ext]'},
           {
-            from: resolve(isDevMode
-              ? 'node_modules/react/umd/react.development.js'
-              : 'node_modules/react/umd/react.production.min.js'
-            ),
+            from: resolve(`node_modules/react/umd/react.${reactLib}.js`),
             to: 'js/react.js',
           },
           {
-            from: resolve(isDevMode
-              ? 'node_modules/react-dom/umd/react-dom.development.js'
-              : 'node_modules/react-dom/umd/react-dom.production.min.js'
-            ),
+            from: resolve(`node_modules/react-dom/umd/react-dom.${reactLib}.js`),
             to: 'js/react-dom.js',
           },
         ]
