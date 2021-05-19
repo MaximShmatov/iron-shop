@@ -29,7 +29,7 @@ export function AppServer({title, store, location}: TPageProps) {
 
       <link rel="manifest" href="favicon/manifest.json"/>
 
-      <link href="css/index.css" rel="stylesheet"/>
+      {(process.env.NODE_ENV === 'production') && <link href="css/index.css" rel="stylesheet"/>}
 
       <title>{title}</title>
     </head>

@@ -18,7 +18,7 @@ export function Header() {
       <nav className={styles.nav}>
         <ul className={styles.links}>
           {links.map(({path, caption}) => (
-            <li className={styles.link} key={Math.random()}>
+            <li className={styles.link} key={path}>
               <Link className={styles.ref} to={path}>{caption}</Link>
             </li>
           ))}

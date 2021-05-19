@@ -1,6 +1,6 @@
 import styles from './NewsBlock.module.sass';
 
-type TProps = {
+export type TNewsBlockProps = {
   urlToImage: string;
   url: string;
   title: string;
@@ -10,12 +10,12 @@ type TProps = {
   };
 };
 
-export function NewsBlock({ news }: {news: TProps}) {
+export function NewsBlock({news}: { news: TNewsBlockProps }) {
   const {urlToImage, url, title, publishedAt, source} = news;
 
   return (
     <div className={styles.newsBlock}>
-      <img className={styles.image} alt="" src={urlToImage} />
+      <img className={styles.image} alt="" src={urlToImage}/>
       <h3 className={styles.newsTitle}>
         <a href={url} rel="noopener noreferrer" target="_blank">
           {title}

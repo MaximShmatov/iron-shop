@@ -5,6 +5,7 @@ import styles from './Profile.module.sass';
 
 export default function Profile() {
   const isAuth = useSelector(({ auth }) => auth.isAuth);
+
   const profile = {
     name: 'Administrator',
     role: 'Admin',
@@ -14,7 +15,9 @@ export default function Profile() {
     imgAlt: 'Admin Icon',
   };
 
-  return isAuth ? (
+  if (!isAuth) return  <Redirect to="/login.html" />;
+
+  return (
     <main className={styles.page}>
       <h1 className={styles.title}>User Profile</h1>
       <table className={styles.table}>
@@ -45,7 +48,5 @@ export default function Profile() {
         </tbody>
       </table>
     </main>
-  ) : (
-    <Redirect to="/login.html" />
   );
 }

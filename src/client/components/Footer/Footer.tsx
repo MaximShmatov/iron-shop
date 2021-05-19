@@ -27,7 +27,7 @@ export function Footer() {
       <div className={styles.icons}>
         {iconsData.map(({ link, src, alt }) => (
           <a
-            key={Math.random()}
+            key={link}
             className={styles.ref}
             href={link} target="_blank"
             rel="noopener noreferrer"

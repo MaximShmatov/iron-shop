@@ -3,7 +3,7 @@ import { fetchTopHeadlines, fetchFromKeywords } from '../../api/news';
 import { setNewsList } from '../../store/newsSlice';
 import { setMessage } from '../../store/snackbarSlice';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
-import { NewsBlock } from '../../components/NewsBlock/NewsBlock';
+import {NewsBlock, TNewsBlockProps} from '../../components/NewsBlock/NewsBlock';
 import styles from './News.module.sass';
 
 
@@ -45,8 +45,8 @@ export default function News() {
         </h1>
         <SearchForm onsubmit={handleFormSubmit} />
       </div>
-      {news.map((item) => (
-        <div key={Math.random()}>
+      {news.map((item: TNewsBlockProps) => (
+        <div key={item.url}>
           <hr className={styles.separator} />
           <NewsBlock news={item} />
         </div>)

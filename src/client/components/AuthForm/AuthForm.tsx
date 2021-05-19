@@ -9,22 +9,18 @@ import styles from './AuthForm.module.sass';
 
 export function AuthForm({className}: { className: string }) {
   const dispatch = useDispatch();
-  const credentials = useSelector(({auth}) => auth.credentials);
+  const authData = useSelector(({auth}) => auth.credentials);
   const history = useHistory();
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
+  const [credentials, setCredentials] = useState({name: '', password: ''});
 
   const handleHelpClick = () => {
-    const name = credentials.name;
-    const password = credentials.password;
-    if (name) setName(name);
-    if (password) setPassword(password);
+    setCredentials({...authData})
   };
 
   const handleFormSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const isTrueName = (credentials.name === name);
-    const isTruePassword = (credentials.password === password);
+    const isTrueName = (authData.name === credentials.name);
+    const isTruePassword = (authData.password === credentials.password);
     if (isTrueName && isTruePassword) {
       dispatch(setIsAuth(true));
       history.push('/profile.html');
@@ -44,18 +40,18 @@ export function AuthForm({className}: { className: string }) {
           className={styles.name}
           type="text"
           name="name"
-          value={name}
+          value={credentials.name}
           onChange={(evt) => {
-            setName(evt.target.value)
+            setCredentials({...credentials, name: evt.target.value})
           }}
           placeholder="User Name"/>
         <input
           className={styles.password}
-          type="text" // must be password
+          type="password"
           name="password"
-          value={password}
+          value={credentials.password}
           onChange={(evt) => {
-            setPassword(evt.target.value)
+            setCredentials({...credentials, password: evt.target.value})
           }}
           placeholder="Password"/>
         <label className={styles.remember}>
