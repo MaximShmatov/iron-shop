@@ -3,6 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   isAuth: false,
   authCounter: 0,
+  credentials: {
+    name: 'admin',
+    password: 'admin',
+  },
 };
 
 const sliderSlice = createSlice({

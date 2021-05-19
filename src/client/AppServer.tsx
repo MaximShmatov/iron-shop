@@ -1,7 +1,14 @@
-import {ReactElement} from 'react';
+import {StaticRouter} from 'react-router-dom';
+import {Store} from '@reduxjs/toolkit';
+import {App} from './App';
 
+type TPageProps = {
+  title: string,
+  location: string,
+  store: Store,
+};
 
-export function PageTpl({children, title, state}: { children?: ReactElement, title: string, state?: string }) {
+export function AppServer({title, store, location}: TPageProps) {
   return (
     <html lang="ru" dir="ltr">
     <head>
@@ -21,13 +28,14 @@ export function PageTpl({children, title, state}: { children?: ReactElement, tit
       <meta name="msapplication-TileColor" content="#da532c"/>
 
       <link rel="manifest" href="favicon/manifest.json"/>
-      <link href="css/index.css" rel="stylesheet"/>
 
       <title>{title}</title>
     </head>
     <body>
-    <div id="root" data-state={state}>
-      {children}
+    <div id="root">
+      <StaticRouter location={location} context={{}}>
+        <App store={store}/>
+      </StaticRouter>
     </div>
     <script defer src="js/react.js"/>
     <script defer src="js/react-dom.js"/>

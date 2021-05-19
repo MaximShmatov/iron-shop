@@ -1,4 +1,4 @@
-import {Link} from '../Link/Link';
+import {Link} from 'react-router-dom';
 import styles from './Header.module.sass';
 
 
@@ -6,7 +6,7 @@ const links = [
   {path: '/index.html', caption: 'Home'},
   {path: '/news.html', caption: 'News'},
   {path: '/profile.html', caption: 'Profile'},
-  {path: '/signin.html', caption: 'Sign In'},
+  {path: '/login.html', caption: 'Sign In'},
 ];
 
 export function Header() {

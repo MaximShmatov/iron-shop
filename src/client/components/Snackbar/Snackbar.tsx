@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setMessage } from '../../redux/snackbarSlice';
+import { setMessage } from '../../store/snackbarSlice';
 import styles from './Snackbar.module.sass';
 
 

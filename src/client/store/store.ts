@@ -11,11 +11,18 @@ const rootReducer = {
     news,
   },
 };
+
 const store = configureStore(rootReducer);
 
+type TRootSate = ReturnType<typeof store.getState>;
+
 declare module 'react-redux' {
-  interface DefaultRootState extends ReturnType<typeof store.getState> {
+  interface DefaultRootState extends TRootSate {
   }
 }
 
-export {store, rootReducer};
+const getStore = (state?: TRootSate) => {
+  return state ? configureStore({...rootReducer, preloadedState: state}) : store;
+};
+
+export {getStore, TRootSate};

@@ -1,6 +1,6 @@
 In progress...
 ===============
 
-Target: fullstack
+Target: fullstack, SSR
 
-Tech:react, webpack, nest, react-router-dom, redux, SSR, HRM, nodejs
+Tech:react, webpack, nestjs, react-router-dom, redux, SSR, HMR, nodejs, svg

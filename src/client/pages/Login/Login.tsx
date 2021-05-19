@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { setIsAuth } from '../../redux/authSlice';
+import { setIsAuth } from '../../store/authSlice';
 import { Button } from '../../components/Button/Button';
 import { AuthForm } from '../../components/AuthForm/AuthForm';
 import { Speedometer } from '../../components/Speedometer/Speedometer';
-import styles from './SignIn.module.sass';
+import styles from './Login.module.sass';
 
 
-export default function SignIn() {
+export default function Login() {
   const dispatch = useDispatch();
   const isAuth = useSelector(({ auth }) => auth.isAuth);
 

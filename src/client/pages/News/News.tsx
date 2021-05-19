@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTopHeadlines, fetchFromKeywords } from '../../api/news';
-import { setNewsList } from '../../redux/newsSlice';
-import { setMessage } from '../../redux/snackbarSlice';
+import { setNewsList } from '../../store/newsSlice';
+import { setMessage } from '../../store/snackbarSlice';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { NewsBlock } from '../../components/NewsBlock/NewsBlock';
 import styles from './News.module.sass';

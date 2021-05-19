@@ -18,6 +18,7 @@ export function getConfig(mode: string) {
     output: {
       path: resolve('build'),
       filename: '[name].js',
+      clean: true,
     },
     target: 'node',
     externalsPresets: {node: true},

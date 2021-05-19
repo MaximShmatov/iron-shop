@@ -9,11 +9,13 @@ process.env.NODE_ENV = 'development';
 const compiler = webpack(getConfig(process.env.NODE_ENV));
 
 let serverEmitted = false;
+cluster.setupMaster({exec: 'build/server.js'});
+
 compiler.hooks.done.tap('RUN_SERVER', () => {
   if (!serverEmitted) {
     serverEmitted = true;
-    cluster.setupMaster({exec: 'build/server.js'});
-    cluster.fork();
+    cluster.fork()
+      .on('exit', () => serverEmitted = false);
   }
 });
 

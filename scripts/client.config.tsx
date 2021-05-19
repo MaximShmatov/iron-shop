@@ -1,4 +1,4 @@
-import {Configuration, HotModuleReplacementPlugin, webpack} from 'webpack';
+import {Configuration, HotModuleReplacementPlugin} from 'webpack';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
@@ -10,16 +10,15 @@ import {commonConfig} from './common.config';
 export function getConfig(mode: string) {
   const isDevMode = (mode === 'development');
   const reactLib = isDevMode ? 'development' : 'production.min';
+
   return {
     ...commonConfig,
     mode,
     entry: {
-      index: {
-        import: [
-          isDevMode && 'webpack-hot-middleware/client',
-          resolve('src/client/index.tsx'),
-        ].filter(Boolean)
-      },
+      index: [
+        isDevMode && 'webpack-hot-middleware/client',
+        resolve(`src/client/appClient.tsx`),
+      ].filter(Boolean),
     },
     output: {
       path: resolve('build', 'public'),
@@ -77,6 +76,14 @@ export function getConfig(mode: string) {
       ],
     },
     plugins: [
+      // new HtmlWebpackPlugin({
+      //   templateContent: '<!DOCTYPE html>' + renderToString(
+      //     <AppServer title='Index' location='index.html' state={JSON.stringify(store.getState())}/>
+      //   ),
+      //   filename: 'index.html',
+      //   chunks: ['index'],
+      //   inject: 'body',
+      // }),
       new CopyWebpackPlugin({
         patterns: [
           {
@@ -84,7 +91,8 @@ export function getConfig(mode: string) {
           },
           {
             from: '**/img/*',
-            to: 'img/[name].[ext]'},
+            to: 'img/[name].[ext]'
+          },
           {
             from: resolve(`node_modules/react/umd/react.${reactLib}.js`),
             to: 'js/react.js',
@@ -98,12 +106,6 @@ export function getConfig(mode: string) {
       isDevMode && new HotModuleReplacementPlugin(),
       isDevMode && new ReactRefreshWebpackPlugin(),
       !isDevMode && new MiniCssExtractPlugin({filename: 'css/[name].css'}),
-      // new HtmlWebpackPlugin({
-      //   template: resolve('src/client/templates/index.html'),
-      //   filename: 'index.html',
-      //   chunks: ['index'],
-      //   inject: 'body',
-      // }),
     ].filter(Boolean),
   } as Configuration;
 }

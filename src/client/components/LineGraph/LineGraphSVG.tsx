@@ -56,10 +56,10 @@ export function LineGraphSVG({from, to, maxX, maxY, scaleSize}: TLineGraphSVGPro
         <marker
           id={'arrow'}
           viewBox={'0 0 10 10'}
-          refX={'10'}
-          refY={'5'}
-          markerWidth={'1.5'}
-          markerHeight={'1.5'}
+          refX={10}
+          refY={5}
+          markerWidth={1.5}
+          markerHeight={1.5}
           orient={'auto-start-reverse'}
           fill={'green'}>
           <path d={'M 0 0 L 10 5 L 0 10 z'}/>
@@ -67,11 +67,11 @@ export function LineGraphSVG({from, to, maxX, maxY, scaleSize}: TLineGraphSVGPro
         <marker
           id={'dot'}
           viewBox={'0 0 10 10'}
-          refX={'5'}
-          refY={'5'}
-          markerWidth={'5'}
-          markerHeight={'5'}>
-          <circle cx={'5'} cy={'5'} r={'4'} fill={'red'}/>
+          refX={5}
+          refY={5}
+          markerWidth={5}
+          markerHeight={5}>
+          <circle cx={5} cy={5} r={5} fill={'red'}/>
         </marker>
       </defs>
       <polyline
