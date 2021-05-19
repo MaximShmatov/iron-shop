@@ -1,5 +1,6 @@
 import {Configuration, HotModuleReplacementPlugin} from 'webpack';
 import ReactRefreshTypeScript from 'react-refresh-typescript';
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as CopyWebpackPlugin from 'copy-webpack-plugin';
 import * as ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
@@ -17,7 +18,7 @@ export function getConfig(mode: string) {
     entry: {
       index: [
         isDevMode && 'webpack-hot-middleware/client',
-        resolve(`src/client/appClient.tsx`),
+        resolve('src/client/appClient.tsx'),
       ].filter(Boolean),
     },
     output: {
@@ -77,9 +78,7 @@ export function getConfig(mode: string) {
     },
     plugins: [
       // new HtmlWebpackPlugin({
-      //   templateContent: '<!DOCTYPE html>' + renderToString(
-      //     <AppServer title='Index' location='index.html' state={JSON.stringify(store.getState())}/>
-      //   ),
+      //   templateContent: '',
       //   filename: 'index.html',
       //   chunks: ['index'],
       //   inject: 'body',
