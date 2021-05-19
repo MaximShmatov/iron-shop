@@ -4,7 +4,7 @@ import {TRoute} from './routes';
 
 
 const getPages = async () => ({
-  index: (await import('../pages/Index')).default,
+  index: (await import('../pages/Index/Index')).default,
   profile: (await import('../pages/Profile/Profile')).default,
   news: (await import('../pages/News/News')).default,
   login: (await import('../pages/Login/Login')).default,
