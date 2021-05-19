@@ -1,6 +1,6 @@
-In progress...
+In Progress...
 ===============
+###Deployed on Heroku - [look at](https://shop-iron.herokuapp.com/index.html)
 
-Target: fullstack, SSR
-
-Tech:react, webpack, nestjs, react-router-dom, redux, SSR, HMR, nodejs, svg
+####TARGET: fullstack, SSR
+####TECH: react, webpack, nestjs, react-router-dom, redux, SSR, HMR, nodejs, svg...
