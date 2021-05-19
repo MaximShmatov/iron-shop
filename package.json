@@ -6,6 +6,10 @@
   "license": "ISC",
   "author": "Maxim Shmatov",
   "private": true,
+  "engines": {
+    "node": "14.15",
+    "npm": "6.14"
+  },
   "scripts": {
     "dev": "ts-node scripts/dev.ts",
     "build": "ts-node scripts/build.ts",
