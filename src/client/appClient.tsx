@@ -8,7 +8,7 @@ import {Store} from '@reduxjs/toolkit';
 const url = new URL(`${document.location.origin}/_app_state_`);
 
 const appHydrate = (store: Store) => hydrate(
-  <BrowserRouter forceRefresh={true}>
+  <BrowserRouter>
     <App store={store}/>
   </BrowserRouter>
   , document.getElementById('root')
