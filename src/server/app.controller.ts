@@ -25,7 +25,7 @@ export class AppController {
   }
 
   @Get('/*.html')
-  dispatchPage(@Res() res: Writable, @Param() params: string, @Session() session: {state: DefaultRootState}): void {
+  dispatchPage(@Res({passthrough: true}) res: Writable, @Param() params: string, @Session() session: {state: DefaultRootState}): void {
     const store = getStore(session?.state);
     if (session) session.state = store.getState();
     res.write('<!DOCTYPE html>');
