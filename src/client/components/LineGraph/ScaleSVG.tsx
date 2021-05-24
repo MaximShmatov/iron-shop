@@ -1,36 +1,22 @@
-import {useRef} from 'react';
+import {ReactElement} from 'react';
 
-
-type TLineGraphSVGProps = {
+export type TScaleSVGProps = {
   scaleSize: number
   maxX: number,
   maxY: number,
-  from: number[][],
-  to: number[][],
+  children?: ReactElement,
 }
 
-export function LineGraphSVG({from, to, maxX, maxY, scaleSize}: TLineGraphSVGProps) {
-  const animateRef = useRef<SVGAnimationElement | null>(null);
-
+export function ScaleSVG({maxX, maxY, scaleSize, children}: TScaleSVGProps) {
   const heightViewBox = 300;
   const widthViewBox = 600;
   const offsetGraph = 25;
   const mapAxis = new Array(scaleSize).fill(0);
-
-  const calcPointCoords = (xy: number[]) => {
-    const x = Math.round((widthViewBox - offsetGraph) / maxX * xy[0] + offsetGraph);
-    const y = Math.round(heightViewBox - (heightViewBox - offsetGraph) / maxY * xy[1] - offsetGraph);
-    return [x, y];
-  };
-
-  const searchReg = /([0-9]+),([0-9]+),/g;
-  const fromPoints = from.map(calcPointCoords).toString().replace(searchReg, '$1,$2 ');
-  const toPoints = to.map(calcPointCoords).toString().replace(searchReg, '$1,$2 ');
-
   const xDashArray = mapAxis.map(() => `${(widthViewBox - offsetGraph) / scaleSize - 2},2`);
   const yDashArray = mapAxis.map(() => `2,${(heightViewBox - offsetGraph) / scaleSize - 2}`);
 
   mapAxis.pop();
+  console.log('11111111111111')
   const xText = mapAxis.map((_, i) => ({
     key: `textX${i}`,
     x: (widthViewBox - offsetGraph) / scaleSize * (i + 1) + offsetGraph,
@@ -48,10 +34,7 @@ export function LineGraphSVG({from, to, maxX, maxY, scaleSize}: TLineGraphSVGPro
   }));
 
   return (
-    <svg
-      viewBox={`0 0 ${widthViewBox} ${heightViewBox}`}
-      key={Math.random()}
-    >
+    <svg viewBox={`0 0 ${widthViewBox} ${heightViewBox}`}>
       <defs>
         <marker
           id={'arrow'}
@@ -63,15 +46,6 @@ export function LineGraphSVG({from, to, maxX, maxY, scaleSize}: TLineGraphSVGPro
           orient={'auto-start-reverse'}
           fill={'green'}>
           <path d={'M 0 0 L 10 5 L 0 10 z'}/>
-        </marker>
-        <marker
-          id={'dot'}
-          viewBox={'0 0 10 10'}
-          refX={5}
-          refY={5}
-          markerWidth={5}
-          markerHeight={5}>
-          <circle cx={5} cy={5} r={5} fill={'red'}/>
         </marker>
       </defs>
       <polyline
@@ -96,25 +70,7 @@ export function LineGraphSVG({from, to, maxX, maxY, scaleSize}: TLineGraphSVGPro
         strokeWidth={2}
         fill={'none'}
       />
-      <polyline
-        points={fromPoints}
-        stroke={'red'}
-        strokeWidth={2}
-        strokeLinecap={'round'}
-        strokeLinejoin={'round'}
-        markerStart={'url(#dot)'}
-        markerMid={'url(#dot)'}
-        markerEnd={'url(#dot)'}
-        fill={'none'}
-      >
-        <animate
-          ref={animateRef}
-          attributeName={'points'}
-          to={toPoints}
-          dur={'.7s'}
-          fill={'freeze'}
-        />
-      </polyline>
+      {children}
       <g fill={'red'} fontWeight={'bold'} fontSize={17}>
         {[...xText, ...yText].map((props) => <text {...props} />)}
       </g>

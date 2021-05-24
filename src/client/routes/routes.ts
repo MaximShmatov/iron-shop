@@ -1,14 +1,14 @@
-type TRoute = {
+export type TRoute = {
   path: string;
-  page: string;
+  name: string;
   exact: boolean;
 };
 
-const routes = [
-  {path: '/index.html', page: 'index', exact: false},
-  {path: '/profile.html', page: 'profile', exact: false},
-  {path: '/news.html', page: 'news', exact: false},
-  {path: '/login.html', page: 'login', exact: false},
-];
-
-export {routes, TRoute}
+export const routes = {
+  pages: [
+    {path: '/index.html', name: 'index', exact: false},
+    {path: '/profile.html', name: 'profile', exact: false},
+    {path: '/news.html', name: 'news', exact: false},
+    {path: '/login.html', name: 'login', exact: false},
+  ]
+};

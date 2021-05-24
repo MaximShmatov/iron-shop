@@ -4,8 +4,7 @@ import {Provider} from 'react-redux';
 import {Snackbar} from './components/Snackbar/Snackbar';
 import {Header} from './components/Header/Header';
 import {Footer} from './components/Footer/Footer';
-import {AppSwitch} from './routes/AppSwitch';
-import {routes} from './routes/routes';
+import {PageSwitcher} from './routes/PageSwitcher';
 import './App.sass';
 
 
@@ -15,7 +14,7 @@ export function App({store}: {store: Store}) {
       <Provider store={store}>
         <Snackbar/>
         <Header/>
-        <AppSwitch routes={routes}/>
+        <PageSwitcher/>
         <Footer/>
       </Provider>
     </StrictMode>

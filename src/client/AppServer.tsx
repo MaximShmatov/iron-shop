@@ -2,6 +2,7 @@ import {StaticRouter} from 'react-router-dom';
 import {Store} from '@reduxjs/toolkit';
 import {App} from './App';
 
+
 type TPageProps = {
   title: string,
   location: string,
