@@ -20,13 +20,13 @@ export const routes = [
         exact: true,
       },
       {
-        path: '/speedometer',
+        path: '/index/speedometer',
         name: 'speedometer',
         caption: 'Спидометр',
         exact: true,
       },
       {
-        path: '/slider',
+        path: '/index/slider',
         name: 'slider',
         caption: 'Слайдер диапазона',
         exact: true,

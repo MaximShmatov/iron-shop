@@ -30,7 +30,7 @@ export class AppController {
   }
 
   @Get('/*')
-  dispatchPage(@Res() res: Writable, @Param() params: string, @Session() session: {state: DefaultRootState}): void {
+  dispatchPage(@Res() res: Writable, @Param() params: string, @Session() session: { state: DefaultRootState }): void {
     const store = getStore(session?.state);
     if (session) session.state = store.getState();
     res.write('<!DOCTYPE html>');

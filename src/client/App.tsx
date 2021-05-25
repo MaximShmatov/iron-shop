@@ -15,13 +15,13 @@ import {Switcher} from './routes/Switcher';
 import './App.sass';
 
 const pages = {
-  index: <Index />,
-  profile: <Profile />,
-  news: <News />,
-  login: <Login />,
+  index: <Index/>,
+  profile: <Profile/>,
+  news: <News/>,
+  login: <Login/>,
 };
 
-export function App({store}: {store: Store}) {
+export function App({store}: { store: Store }) {
   return (
     <StrictMode>
       <Provider store={store}>

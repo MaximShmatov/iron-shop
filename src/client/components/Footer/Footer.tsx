@@ -25,14 +25,14 @@ export function Footer() {
         &copy; 2017-2020 QEX, - системный интегратор решений автоматизации продаж
       </span>
       <div className={styles.icons}>
-        {iconsData.map(({ link, src, alt }) => (
+        {iconsData.map(({link, src, alt}) => (
           <a
             key={link}
             className={styles.ref}
             href={link} target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={src} alt={alt} />
+            <img src={src} alt={alt}/>
           </a>
         ))}
       </div>
