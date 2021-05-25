@@ -25,17 +25,14 @@ export class AppController {
   }
 
   @Get('/*')
-  getFiles(@Param() params: string, @Next() next: () => void) {
-    if (params[0].indexOf('.') < 0) next();
-  }
-
-  @Get('/*')
   dispatchPage(@Res() res: Writable, @Param() params: string, @Session() session: { state: DefaultRootState }): void {
-    const store = getStore(session?.state);
-    if (session) session.state = store.getState();
-    res.write('<!DOCTYPE html>');
-    renderToNodeStream(
-      AppServer({title: params[0], location: `/${params[0]}`, store})
-    ).pipe(res);
+    if (params[0].indexOf('.') < 0) {
+      const store = getStore(session?.state);
+      if (session) session.state = store.getState();
+      res.write('<!DOCTYPE html>');
+      renderToNodeStream(
+        AppServer({title: params[0], location: `/${params[0]}`, store})
+      ).pipe(res);
+    }
   }
 }

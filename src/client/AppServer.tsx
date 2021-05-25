@@ -19,18 +19,18 @@ export function AppServer({title, store, location}: TPageProps) {
       <meta name="keywords" content="IT, ИТ, автоматизация"/>
       <meta name="description" content="Обзор ИТ-индустрии"/>
 
-      <link rel="icon" href="favicon/favicon.ico"/>
-      <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png"/>
-      <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png"/>
+      <link rel="icon" href="/favicon/favicon.ico"/>
+      <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"/>
+      <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"/>
 
-      <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5"/>
-      <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png"/>
+      <link rel="mask-icon" href="/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
+      <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"/>
 
       <meta name="msapplication-TileColor" content="#da532c"/>
 
-      <link rel="manifest" href="favicon/manifest.json"/>
+      <link rel="manifest" href="/favicon/manifest.json"/>
 
-      {(process.env.NODE_ENV === 'production') && <link href="css/index.css" rel="stylesheet"/>}
+      {(process.env.NODE_ENV === 'production') && <link href="/css/index.css" rel="stylesheet"/>}
 
       <title>{title}</title>
     </head>
@@ -40,9 +40,9 @@ export function AppServer({title, store, location}: TPageProps) {
         <App store={store}/>
       </StaticRouter>
     </div>
-    <script defer src="js/react.js"/>
-    <script defer src="js/react-dom.js"/>
-    <script defer src="js/index.js"/>
+    <script defer src="/js/react.js"/>
+    <script defer src="/js/react-dom.js"/>
+    <script defer src="/js/index.js"/>
     </body>
     </html>
   );
