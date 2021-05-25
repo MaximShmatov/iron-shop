@@ -1,7 +1,7 @@
 const KEY = 'ce03e39174374877b5dc588a9012459b';
 
 const baseURL = (path: string) => {
-  const url = new URL('http://newsapi.org');
+  const url = new URL('https://newsapi.org');
   url.pathname = path;
   url.searchParams.set('apiKey', KEY);
   return url;
