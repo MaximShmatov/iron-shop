@@ -15,7 +15,7 @@
   opacity: 0
   z-index: -1
 
-  &:checked + .button + .nav
+  &:checked + .button + .menu
     display: block
 
   &:checked + .button
@@ -27,7 +27,7 @@
   border-radius: .5rem
   padding: .5rem
   user-select: none
-  @media (min-width: 546px)
+  @media (min-width: 599px)
     display: none
 
   &:before
@@ -43,30 +43,10 @@
   &:active
     box-shadow: none
 
-.nav
+.menu
   display: none
   width: 100%
-  @media (min-width: 546px)
+  @media (min-width: 599px)
     display: block
     width: auto
 
-.links
-  display: flex
-  flex-direction: column
-  list-style: none
-  @media (min-width: 546px)
-    flex-direction: row
-
-.link
-  text-align: center
-  padding: 0 2rem
-
-.ref
-  font-size: 2rem
-  text-decoration: none
-  color: inherit
-  cursor: pointer
-
-  &:hover
-    opacity: .5
-    transition: .3s

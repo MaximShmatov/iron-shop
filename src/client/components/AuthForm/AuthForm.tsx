@@ -23,7 +23,7 @@ export function AuthForm({className}: { className: string }) {
     const isTruePassword = (authData.password === credentials.password);
     if (isTrueName && isTruePassword) {
       dispatch(setIsAuth(true));
-      history.push('/profile.html');
+      history.push('/profile');
     } else {
       dispatch(failAuthIncrement(1));
       dispatch(setMessage('Your name or password is failed...'));

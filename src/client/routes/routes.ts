@@ -1,14 +1,54 @@
 export type TRoute = {
   path: string;
   name: string;
+  caption: string;
   exact: boolean;
+  routes?: TRoute[];
 };
 
-export const routes = {
-  pages: [
-    {path: '/index.html', name: 'index', exact: false},
-    {path: '/profile.html', name: 'profile', exact: false},
-    {path: '/news.html', name: 'news', exact: false},
-    {path: '/login.html', name: 'login', exact: false},
-  ]
-};
+export const routes = [
+  {
+    path: '/index',
+    name: 'index',
+    caption: 'Компоненты',
+    exact: false,
+    routes: [
+      {
+        path: '/index/polyline',
+        name: 'polyline',
+        caption: 'Ломаная линия',
+        exact: true,
+      },
+      {
+        path: '/speedometer',
+        name: 'speedometer',
+        caption: 'Спидометр',
+        exact: true,
+      },
+      {
+        path: '/slider',
+        name: 'slider',
+        caption: 'Слайдер диапазона',
+        exact: true,
+      },
+    ],
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    caption: 'Профиль',
+    exact: true,
+  },
+  {
+    path: '/news',
+    name: 'news',
+    caption: 'Новости',
+    exact: true,
+  },
+  {
+    path: '/login',
+    name: 'login',
+    caption: 'Войти',
+    exact: true,
+  },
+];

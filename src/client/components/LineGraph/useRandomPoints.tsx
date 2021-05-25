@@ -7,7 +7,7 @@ export type TRandomPointsProps = {
   maxY: number;
 };
 export type TRandomPoints = [
-  {from: number[][], to: number[][], points: number[][]},
+  { from: number[][], to: number[][], points: number[][] },
   () => void,
 ]
 const getRandomAmountPoints = (maxPoints: number) => Math.round(Math.random() * maxPoints) || 1;
@@ -20,7 +20,7 @@ const getRandomPoints = (pointsAmount: number, maxX: number, maxY: number) => ne
 
 export function useRandomPoints({maxPoints, maxX, maxY}: TRandomPointsProps): TRandomPoints {
   const [points, setPoints] = useState(() => {
-    const initPoints = getRandomPoints(maxPoints, maxX, maxY);
+    const initPoints = new Array(maxPoints).fill([0, 0]);
     return {
       from: initPoints,
       to: initPoints,

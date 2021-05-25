@@ -15,7 +15,7 @@ export default function Profile() {
     imgAlt: 'Admin Icon',
   };
 
-  if (!isAuth) return  <Redirect to="/login.html" />;
+  if (!isAuth) return  <Redirect to="/login" />;
 
   return (
     <main className={styles.page}>

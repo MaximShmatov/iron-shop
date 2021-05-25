@@ -1,11 +1,11 @@
-import {FC} from 'react';
+import {ReactElement} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {TRoute} from './routes';
 
 
 type TSwitcherProps = {
   routes: TRoute[];
-  components: Record<string, FC>;
+  components: Record<string, ReactElement>;
 };
 
 export function Switcher({routes, components}: TSwitcherProps) {
@@ -17,7 +17,7 @@ export function Switcher({routes, components}: TSwitcherProps) {
     <Switch>
       {!!routeComponents.length && routeComponents.map(({path, Component, exact}) =>
         <Route key={path} exact={exact} path={path}>
-          <Component/>
+          {Component}
         </Route>
       )}
     </Switch>

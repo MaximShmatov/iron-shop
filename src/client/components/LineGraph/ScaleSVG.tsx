@@ -16,7 +16,7 @@ export function ScaleSVG({maxX, maxY, scaleSize, children}: TScaleSVGProps) {
   const yDashArray = mapAxis.map(() => `2,${(heightViewBox - offsetGraph) / scaleSize - 2}`);
 
   mapAxis.pop();
-  console.log('11111111111111')
+
   const xText = mapAxis.map((_, i) => ({
     key: `textX${i}`,
     x: (widthViewBox - offsetGraph) / scaleSize * (i + 1) + offsetGraph,

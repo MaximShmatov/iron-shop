@@ -2,17 +2,17 @@ import styles from './Footer.module.sass';
 
 const iconsData = [
   {
-    src: 'img/twitter.png',
+    src: '/img/twitter.png',
     alt: 'twitter',
     link: 'http://twitter.com',
   },
   {
-    src: 'img/facebook.png',
+    src: '/img/facebook.png',
     alt: 'facebook',
     link: 'http://facebook.com',
   },
   {
-    src: 'img/instagram.png',
+    src: '/img/instagram.png',
     alt: 'instagram',
     link: 'http://instagram.com',
   }
