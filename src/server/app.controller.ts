@@ -25,7 +25,7 @@ export class AppController {
   }
 
   @Get('/*')
-  dispatchPage(@Res() res: Writable, @Param() params: string, @Session() session: { state: DefaultRootState }): void {
+  dispatchPage(@Res() res: Writable, @Param() params: string, @Session() session: { state: DefaultRootState }, @Next() next: () => void): void {
     if (params[0].indexOf('.') < 0) {
       const store = getStore(session?.state);
       if (session) session.state = store.getState();
@@ -33,6 +33,6 @@ export class AppController {
       renderToNodeStream(
         AppServer({title: params[0], location: `/${params[0]}`, store})
       ).pipe(res);
-    }
+    } else next();
   }
 }
