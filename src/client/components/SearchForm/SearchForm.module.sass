@@ -1,9 +1,23 @@
-.form
+.searchForm
   display: flex
   align-items: center
+  justify-content: flex-end
+  border-radius: 2rem
+  background: inherit
 
-.input
-  width: 100%
-  font-size: 1.6rem
-  height: 100%
-  padding: 0 1rem
+  &__input
+    font: inherit
+    width: 0
+    align-self: stretch
+    border-radius: 2rem
+    text-align: center
+    border: none
+    z-index: 1
+    &_size_fullWidth
+      border: 1px solid #2b2b2b
+      flex-grow: 1
+      padding: 0 1rem
+      transition: ease-in-out .7s
+
+  &__button
+    margin: 1rem .2rem

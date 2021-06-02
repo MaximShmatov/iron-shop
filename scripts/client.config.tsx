@@ -68,6 +68,7 @@ export function getConfig(mode: string) {
             {
               loader: 'css-loader',
               options: {
+                url: false,
                 modules: false,
               },
             },

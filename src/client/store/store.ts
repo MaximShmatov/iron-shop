@@ -2,6 +2,7 @@ import {configureStore} from '@reduxjs/toolkit';
 import snackbar from './snackbarSlice';
 import auth from './authSlice';
 import news from './newsSlice';
+import slider from '../components/Slider/rangeSliderSlice';
 
 
 const rootReducer = {
@@ -9,6 +10,7 @@ const rootReducer = {
     snackbar,
     auth,
     news,
+    slider,
   },
 };
 

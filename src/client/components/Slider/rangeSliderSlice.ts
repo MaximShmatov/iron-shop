@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
   minValue: -15,
@@ -19,7 +19,7 @@ const sliderSlice = createSlice({
 
     setMinValue(state, action) {
       const min = action.payload;
-      let { minValue, maxValue, valueFrom, stepSize } = state;
+      let {minValue, maxValue, valueFrom, stepSize} = state;
       if (min < valueFrom) {
         const step = Math.round((valueFrom - min) / stepSize) * stepSize;
         minValue = valueFrom - step;
@@ -30,7 +30,7 @@ const sliderSlice = createSlice({
 
     setMaxValue(state, action) {
       const max = action.payload;
-      let { minValue, maxValue, valueFrom, valueTo, stepSize, isRange } = state;
+      let {minValue, maxValue, valueFrom, valueTo, stepSize, isRange} = state;
       if (isRange && max <= valueTo) maxValue = valueTo;
       else if (max <= valueFrom) maxValue = valueFrom;
       else {
@@ -43,7 +43,7 @@ const sliderSlice = createSlice({
 
     setValueFrom(state, action) {
       const from = action.payload;
-      let { minValue, maxValue, valueFrom, valueTo, stepSize, isRange } = state;
+      let {minValue, maxValue, valueFrom, valueTo, stepSize, isRange} = state;
       if (from <= minValue) valueFrom = minValue;
       else if (isRange && from >= valueTo) valueFrom = valueTo;
       else if (from >= maxValue) valueFrom = maxValue;
@@ -57,7 +57,7 @@ const sliderSlice = createSlice({
     setValueTo(state, action) {
       if (state.isRange) {
         const to = action.payload;
-        let { maxValue, valueFrom, valueTo, stepSize } = state;
+        let {maxValue, valueFrom, valueTo, stepSize} = state;
         if (to > valueFrom && to < maxValue) {
           valueTo = Math.round((to - valueFrom) / stepSize);
           valueTo = valueTo * stepSize + valueFrom;
@@ -69,7 +69,7 @@ const sliderSlice = createSlice({
     },
 
     setStepSize(state, action) {
-      let { minValue, maxValue, valueFrom, valueTo, stepSize, isRange } = state;
+      let {minValue, maxValue, valueFrom, valueTo, stepSize, isRange} = state;
       const maxStep = Math.abs(maxValue - minValue);
       stepSize = Math.abs(Math.round(action.payload));
 
@@ -98,7 +98,7 @@ const sliderSlice = createSlice({
 
     setIsRange(state, action) {
       const isRange = action.payload;
-      let { maxValue, valueFrom, valueTo } = state;
+      let {maxValue, valueFrom, valueTo} = state;
       if (isRange) {
         if (valueTo > maxValue) valueTo = maxValue;
         if (valueTo < valueFrom) valueTo = valueFrom;

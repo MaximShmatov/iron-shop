@@ -1,5 +1,4 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import styles from './Slider.module.sass';
 
 interface Props {
@@ -9,10 +8,10 @@ interface Props {
   moveThumb: (evt: React.MouseEvent | MouseEvent) => void,
 }
 
-function SliderRail({ move, moveThumb, moveFrom, moveTo }: Props) {
+function SliderRail({move, moveThumb, moveFrom, moveTo}: Props) {
   const {
-    valueFrom, valueTo, isRange, isVertical, hasTooltip ,
-  } = useSelector(({ slider }) => slider)
+    valueFrom, valueTo, isRange, isVertical, hasTooltip,
+  } = useSelector(({slider}) => slider)
 
   const handleMouseMove = (evt: MouseEvent) => {
     moveThumb(evt);

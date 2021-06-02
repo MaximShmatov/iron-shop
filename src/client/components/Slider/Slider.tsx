@@ -1,6 +1,6 @@
-import React, {useEffect, useRef, useState} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setValueFrom, setValueTo } from './rangeSliderSlice';
+import {useEffect, useRef, useState} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {setValueFrom, setValueTo} from './rangeSliderSlice';
 import SliderScale from './SliderScale';
 import SliderRail from './SliderRail';
 import styles from './Slider.module.sass';
@@ -8,9 +8,9 @@ import styles from './Slider.module.sass';
 function Slider() {
   const {
     minValue, maxValue, valueFrom, valueTo, isVertical, isRange,
-  } = useSelector(({ slider }) => slider);
+  } = useSelector(({slider}) => slider);
 
-  const [clientRect, setClientRect] = useState({ offsetXorY: 0, widthOrHeight: 0 })
+  const [clientRect, setClientRect] = useState({offsetXorY: 0, widthOrHeight: 0})
 
   const railRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +34,7 @@ function Slider() {
   let clickOffset = 0
 
   const calcPosToPercent = (evt: MouseEvent | React.MouseEvent) => {
-    const { offsetXorY, widthOrHeight } = clientRect;
+    const {offsetXorY, widthOrHeight} = clientRect;
     const clientXorY = isVertical ? evt.clientY : evt.clientX;
     const pos = (clientXorY - offsetXorY) / (widthOrHeight / 100);
     return (pos - clickOffset);
@@ -83,7 +83,7 @@ function Slider() {
         move={handleMouseDown}
         moveThumb={handleMouseMove}
       />
-      <SliderScale move={handleMouseDown} />
+      <SliderScale move={handleMouseDown}/>
     </div>
   );
 }

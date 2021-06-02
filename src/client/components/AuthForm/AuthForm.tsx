@@ -7,7 +7,7 @@ import {Button} from '../Button/Button';
 import styles from './AuthForm.module.sass';
 
 
-export function AuthForm({className}: { className: string }) {
+export function AuthForm() {
   const dispatch = useDispatch();
   const authData = useSelector(({auth}) => auth.credentials);
   const history = useHistory();
@@ -31,7 +31,7 @@ export function AuthForm({className}: { className: string }) {
   };
 
   return (
-    <form className={`${styles.form} ${className}`} name="auth" onSubmit={handleFormSubmit}>
+    <form className={styles.form} name="auth" onSubmit={handleFormSubmit}>
       <fieldset className={styles.fieldset}>
         <legend className={styles.legend}>
           Sign In
@@ -53,27 +53,29 @@ export function AuthForm({className}: { className: string }) {
           onChange={(evt) => {
             setCredentials({...credentials, password: evt.target.value})
           }}
-          placeholder="Password"/>
+          placeholder={'Password'}/>
         <label className={styles.remember}>
           <input
             className={styles.checkbox}
-            type="checkbox"
-            name="save"
+            type={'checkbox'}
+            name={'save'}
           />
           Remember Me
         </label>
         <Button
-          className={styles.signin}
-          type="submit"
+          type={'submit'}
+          variant={'filled'}
         >
           Sign In
         </Button>
-        <input
-          className={styles.help}
-          type="button"
+        <Button
+          type={'button'}
+          variant={'transparent'}
           onClick={handleHelpClick}
-          value="&#128712; Lost Password ?"
-        />
+          icon="&#xebf9;"
+        >
+          Lost Password ?
+        </Button>
       </fieldset>
     </form>
   );

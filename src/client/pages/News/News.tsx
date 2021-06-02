@@ -33,7 +33,9 @@ export default function News() {
             dispatch(setMessage(`${data.status}: Limit reached...`));
           }
         })
-        .catch((error) => dispatch(setMessage(error.toString())));
+        .catch((error) => {
+          dispatch(setMessage(error.toString()));
+        });
     }
   };
 
@@ -43,7 +45,10 @@ export default function News() {
         <h1 className={styles.title}>
           News
         </h1>
-        <SearchForm onsubmit={handleFormSubmit} />
+        <SearchForm
+          onSubmit={handleFormSubmit}
+          placeholder={'Поиск по новостям'}
+        />
       </div>
       {news.map((item: TNewsBlockProps) => (
         <div key={item.url}>

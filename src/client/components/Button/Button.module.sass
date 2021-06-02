@@ -1,13 +1,62 @@
 .button
-  font-size: inherit
-  font-weight: bold
-  color:  inherit
-  background: linear-gradient(0deg, #808887 0%, #E3E4F1 100%)
-  padding: 1rem
-  border: none
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  font: inherit
+  line-height: 100%
+  color: inherit
+  cursor: pointer
 
-  &:hover
-    opacity: .8
+  &__icon
+    font-size: 2rem
+    line-height: 100%
+    margin: 0 .8rem
 
-  &:active
-    opacity: .5
+  &_position
+    &_left
+      flex-direction: row
+
+    &_right
+      flex-direction: row-reverse
+
+    &_top
+      flex-direction: column
+      padding-top: .6rem
+
+    &_bottom
+      flex-direction: column-reverse
+
+  &_variant
+    &_transparent
+      font-weight: 700
+      background: transparent
+      vertical-align: center
+      border: none
+
+      &:hover
+        filter: drop-shadow(0px 2px 4px #2aff2a)
+
+      &:active
+        color: #2aff2a
+        filter: none
+
+    &_filled, &_bordered, &_borderedDown
+      font-weight: 700
+      border-radius: .5rem
+      border: 1px solid white
+      background-color: #2b2b2b
+      color: white
+      .button__icon
+        margin: 1rem
+
+      &:hover
+        box-shadow: 0 0 5px #2aff2a
+
+      &:active, &Down
+        color: #2aff2a
+        box-shadow: none
+
+    &_filled
+      border-radius: 2rem
+      border: none
+      padding: 1rem

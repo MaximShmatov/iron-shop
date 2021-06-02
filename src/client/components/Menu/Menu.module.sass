@@ -1,0 +1,48 @@
+.menu
+  &__checkbox:checked + &__ref > &__refExpand:before
+    content: '\eb54'
+
+  &__checkbox:checked ~ .menu__items
+    max-height: 50rem
+    transition: max-height ease-in-out .7s
+
+  &__ref, &__itemRef
+    display: block
+    text-decoration: none
+    color: inherit
+    cursor: pointer
+
+    &:hover
+      filter: drop-shadow(0px 0px 4px #2aff2a)
+
+    &:active
+      color: #2aff2a
+      filter: none
+
+    &Active
+      color: #8aa78a
+
+  &__ref
+    font-weight: 700
+    padding: .5rem 0
+    @media (min-width: 768px)
+      padding: 0 .5rem
+
+    &Expand:before
+      content: '\eb55'
+
+  &__items
+    max-height: 0
+    overflow: hidden
+    list-style: none
+    text-align: left
+    @media (min-width: 768px)
+      position: absolute
+      background-color: #2b2b2b
+      box-shadow: 0 0 8px #2b2b2b
+
+  &__item
+    &:last-of-type
+      margin-bottom: 1rem
+    &Ref
+      padding: .2rem 2rem .2rem

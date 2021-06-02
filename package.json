@@ -31,7 +31,6 @@
     "@types/webpack-node-externals": "^2.5.0",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.2.4",
-    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.0.0-beta.6",
     "memfs": "^3.2.0",
     "mini-css-extract-plugin": "^1.5.0",

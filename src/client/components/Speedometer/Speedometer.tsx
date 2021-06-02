@@ -1,8 +1,10 @@
-import { useSelector } from 'react-redux';
+export type TSpeedometerProps = {
+  scaleSize: number;
+  counter: number;
+};
 
-export function Speedometer({ scaleSize, className }: {scaleSize: number; className?: string}) {
-  const authCounter = useSelector(({ auth }) => auth.authCounter);
-  const lightScaleSize = authCounter > scaleSize ? scaleSize : authCounter;
+export function Speedometer({scaleSize, counter}: TSpeedometerProps) {
+  const lightScaleSize = (counter > scaleSize) ? scaleSize : counter;
   const darkScaleSize = scaleSize - lightScaleSize;
   const heightViewBox = 250;
   const widthViewBox = 300;
@@ -18,27 +20,26 @@ export function Speedometer({ scaleSize, className }: {scaleSize: number; classN
   const emptySectorLength = circleLength - divisionSectorLength;
 
   const calcEmptySector = (scaleSize: number) => emptySectorLength + dimensionLength * scaleSize + dashLength;
-  const dashArrayDarkScale = new Array(scaleSize - lightScaleSize).fill(`${divisionLength} ${dashLength}`);
+  const dashArrayDarkScale = new Array(scaleSize - lightScaleSize)
+    .fill(`${divisionLength} ${dashLength}`);
   dashArrayDarkScale[dashArrayDarkScale.length - 1] = `${divisionLength} ${calcEmptySector(lightScaleSize)}`;
-  const dashArrayLightScale = new Array(scaleSize - darkScaleSize).fill(`${divisionLength} ${dashLength}`);
+  const dashArrayLightScale = new Array(scaleSize - darkScaleSize)
+    .fill(`${divisionLength} ${dashLength}`);
   dashArrayLightScale[dashArrayLightScale.length - 1] = `${divisionLength} ${calcEmptySector(darkScaleSize)}`;
-  const dashArrayInnerScale = new Array(8).fill(`${dashLength} 45.4`);
+  const dashArrayInnerScale = new Array(8)
+    .fill(`${dashLength} 45.4`);
   dashArrayInnerScale.push(`${dashLength} ${innerCircleLength / 3}`);
   const dimensionRadian = 1 / (radius / dimensionLength);
   const arrowRadian = dimensionRadian * darkScaleSize - (dimensionRadian * 6);
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      viewBox={`0 0 ${widthViewBox} ${heightViewBox}`}
-    >
+    <svg viewBox={`0 0 ${widthViewBox} ${heightViewBox}`}>
       {!!darkScaleSize && <circle
         cx={centerX}
         cy={centerX}
         r={radius}
         stroke={'rgb(15 100 30)'}
-        strokeWidth={'28'}
+        strokeWidth={28}
         strokeDasharray={dashArrayDarkScale.toString()}
         strokeDashoffset={-dimensionLength * lightScaleSize - 317}
         fill={'none'}
@@ -47,21 +48,21 @@ export function Speedometer({ scaleSize, className }: {scaleSize: number; classN
         cx={centerX}
         cy={centerX}
         r={radius / 1.2}
-        stroke="black"
+        stroke={'black'}
         strokeWidth={dashLength}
         strokeDasharray={`${innerCircleLength / 3 * 2} ${innerCircleLength / 3}`}
-        strokeDashoffset="-263"
-        fill="none"
+        strokeDashoffset={-263}
+        fill={'none'}
       />
       <circle
         cx={centerX}
         cy={centerX}
         r={radius / 1.3}
-        stroke="black"
+        stroke={'black'}
         strokeWidth={radius / 8}
         strokeDasharray={dashArrayInnerScale.toString()}
-        transform="rotate(150.5 150 150)"
-        fill="none"
+        transform={'rotate(150.5 150 150)'}
+        fill={'none'}
       />
       {!!lightScaleSize && <circle
         cx={centerX}
@@ -92,8 +93,8 @@ export function Speedometer({ scaleSize, className }: {scaleSize: number; classN
       />
       <text
         x={centerX}
-        y={centerX + 7}
-        fontSize={'2rem'}
+        y={centerX + 10}
+        fontSize={30}
         fontWeight={'bold'}
         textAnchor={'middle'}
         fill={'#17b517'}

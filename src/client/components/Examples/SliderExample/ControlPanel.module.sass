@@ -1,0 +1,34 @@
+.control
+  display: flex
+  align-items: center
+  justify-content: space-between
+  background-color: #DFDFDF
+  padding: 10px
+
+  &__panel
+    display: flex
+    flex-direction: column
+    padding: 1rem
+
+    &Item:not(:last-of-type)
+      display: flex
+      align-items: center
+      line-height: 100%
+      padding-bottom: 5px
+      width: 100%
+
+    &Item:last-of-type
+      text-align: right
+
+    &Item > input
+      margin-right: 10px
+      max-width: 60px
+
+      &[type='checkbox']
+        margin: 0 10px 0 0
+
+  &__input
+    padding: .2rem
+
+  &__range
+    margin-right: 10px

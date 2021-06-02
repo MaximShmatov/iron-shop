@@ -1,5 +1,4 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import {useSelector} from 'react-redux';
 import styles from './Slider.module.sass';
 
 function SliderScale({move}: { move: (evt: React.MouseEvent) => void }) {

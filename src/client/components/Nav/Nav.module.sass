@@ -1,0 +1,27 @@
+.nav
+  &__checkbox
+    &:checked ~ .nav__menu
+      margin-top: 1rem
+      border-top: 1px solid white
+      max-height: 50rem
+      transition: max-height .7s
+      @media (min-width: 768px)
+        border: none
+      @media (min-width: 1200px)
+        margin-top: 0
+
+  &__button
+    margin-left: auto
+    @media (min-width: 768px)
+      display: none
+
+  &__menu
+    display: flex
+    flex-direction: column
+    list-style: none
+    max-height: 0
+    overflow: hidden
+    @media (min-width: 768px)
+      flex-direction: row
+      justify-content: center
+      max-height: 50rem

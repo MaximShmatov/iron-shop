@@ -15,8 +15,10 @@ compiler.hooks.done.tap('RUN_SERVER', () => {
   if (!serverEmitted) {
     serverEmitted = true;
     cluster.fork()
-      .on('exit', () => serverEmitted = false);
+      .on('exit', () => {
+        serverEmitted = false;
+      });
   }
 });
 
-compiler.watch({}, printStats);
+compiler.watch({poll: 1000}, printStats);

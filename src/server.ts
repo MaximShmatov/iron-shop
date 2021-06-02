@@ -12,7 +12,7 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: true,
   cookie: {
-    maxAge: 10000,
+    maxAge: 600000,
   }
 }
 

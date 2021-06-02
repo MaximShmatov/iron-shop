@@ -6,6 +6,7 @@ import Index from './pages/Index/Index';
 import Profile from './pages/Profile/Profile';
 import News from './pages/News/News';
 import Login from './pages/Login/Login';
+import Examples from './pages/Examples/Examples';
 import {routes} from './routes/routes';
 
 import {Snackbar} from './components/Snackbar/Snackbar';
@@ -19,6 +20,7 @@ const pages = {
   profile: <Profile/>,
   news: <News/>,
   login: <Login/>,
+  examples: <Examples/>,
 };
 
 export function App({store}: { store: Store }) {
