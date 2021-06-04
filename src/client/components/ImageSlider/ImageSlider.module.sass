@@ -1,0 +1,39 @@
+.imageSlider
+  position: relative
+  overflow: hidden
+
+  &__image
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    z-index: -2
+    &_position
+      &_left
+        transform: translateX(-100%)
+        z-index: -1
+      &_top
+        position: relative
+        transform: translateX(0%)
+        z-index: 1
+      &_right
+        transform: translateX(100%)
+        z-index: -1
+      &_left, &_top, &_right
+        transition: .7s
+
+  &__control
+    position: absolute
+    right: 1rem
+    bottom: 1rem
+    display: flex
+    align-items: center
+    color: white
+    z-index: 2
+
+  &__counter
+    min-width: 5rem
+    text-align: center
+    width: 100%
+    color: white
