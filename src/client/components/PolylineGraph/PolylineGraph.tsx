@@ -2,7 +2,6 @@ import {useEffect, useMemo} from 'react';
 import {PolylineSVG} from './PolylineSVG';
 import {ScaleSVG} from './ScaleSVG';
 import {useRandomPoints} from './useRandomPoints';
-import styles from './PolylineGraph.module.sass';
 
 
 export type TLineGraphProps = {
@@ -26,7 +25,7 @@ export function PolylineGraph({maxPoints, maxX, maxY, scaleSize, genPointsCallba
   }, [points]);
 
   return (
-    <svg viewBox={'0 0 600 300'} className={styles.polylineGraph} onClick={generatePoints}>
+    <svg viewBox={'0 0 600 300'} onClick={generatePoints}>
       {scale}
       <PolylineSVG from={points.from} to={points.to} maxX={maxX} maxY={maxY}/>
     </svg>

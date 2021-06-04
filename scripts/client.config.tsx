@@ -30,6 +30,11 @@ export function getConfig(mode: string) {
       'react': 'React',
       'react-dom': 'ReactDOM',
     },
+    performance: {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
+    },
     module: {
       rules: [
         {
