@@ -1,16 +1,8 @@
 .nav
-  &__checkbox
-    &:checked ~ .nav__menu
-      margin-top: 1rem
-      border-top: 1px solid white
-      max-height: 50rem
-      transition: max-height .7s
-      @media (min-width: 768px)
-        border: none
-      @media (min-width: 1200px)
-        margin-top: 0
+  display: flex
+  flex-direction: column
 
-  &__button
+  &__checkbox
     margin-left: auto
     @media (min-width: 768px)
       display: none
@@ -25,3 +17,13 @@
       flex-direction: row
       justify-content: center
       max-height: 50rem
+
+    &_checked
+      margin-top: 1rem
+      border-top: 1px solid white
+      max-height: 50rem
+      transition: max-height .7s
+      @media (min-width: 768px)
+        border: none
+      @media (min-width: 1200px)
+        margin-top: 0

@@ -1,8 +1,8 @@
 import {useState} from 'react';
-import {Button} from '../Button/Button';
 import {routes} from '../../routes/routes';
 import styles from './Nav.module.sass';
 import {Menu} from '../Menu/Menu';
+import {Checkbox} from '../Checkbox/Checkbox';
 
 
 export type TNavProps = {
@@ -12,22 +12,26 @@ export type TNavProps = {
 export function Nav({className}: TNavProps) {
   const [isChecked, setIsChecked] = useState(false);
 
+  const rootClasses = [
+    styles.nav,
+    !!className && className,
+  ].filter(Boolean);
+
+  const menuClasses = [
+    styles.nav__menu,
+    isChecked && styles.nav__menu_checked,
+  ].filter(Boolean);
+
   return (
-    <nav className={`${styles.nav} ${className}`}>
-      <input
-        className={`${styles.nav__checkbox} hide`}
-        type={'checkbox'}
-        onChange={() => setIsChecked(!isChecked)}
-        checked={isChecked}
-      />
-      <Button
-        className={styles.nav__button}
-        type={'button'}
-        variant={isChecked ? 'borderedDown' : 'bordered'}
+    <nav className={rootClasses.join(' ')}>
+      <Checkbox
+        className={styles.nav__checkbox}
         icon="&#xeb58;"
-        onClick={() => setIsChecked(!isChecked)}
+        checked={isChecked}
+        onChange={() => setIsChecked(!isChecked)}
+        variant={'filled'}
       />
-      <ul className={styles.nav__menu}>
+      <ul className={menuClasses.join(' ')}>
         {routes.map(({path, caption, routes}) => caption && (
           <li
             className={styles.nav__menuItem}

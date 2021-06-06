@@ -1,4 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
+import {modalWindowSlice} from '../components/ModalWindow/modalWindowSlice';
 import snackbar from './snackbarSlice';
 import auth from './authSlice';
 import news from './newsSlice';
@@ -7,6 +8,7 @@ import slider from '../components/Slider/rangeSliderSlice';
 
 const rootReducer = {
   reducer: {
+    modalWindow: modalWindowSlice.reducer,
     snackbar,
     auth,
     news,

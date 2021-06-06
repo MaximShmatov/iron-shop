@@ -13,5 +13,4 @@ export const indexImages = [
   {src: '/img/monitors.jpg', alt: ''},
   {src: '/img/mouse.jpg', alt: ''},
   {src: '/img/msi-motherboard.jpg', alt: ''},
-
-]
+];

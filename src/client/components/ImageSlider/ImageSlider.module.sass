@@ -8,20 +8,20 @@
     top: 0
     left: 0
     width: 100%
-    z-index: -2
+    z-index: -3
     &_position
       &_left
         transform: translateX(-100%)
-        z-index: -1
+        z-index: -2
       &_top
         position: relative
         transform: translateX(0%)
-        z-index: 1
+        z-index: -1
       &_right
         transform: translateX(100%)
-        z-index: -1
+        z-index: -2
       &_left, &_top, &_right
-        transition: .7s
+        transition: .5s
 
   &__control
     position: absolute
@@ -30,7 +30,6 @@
     display: flex
     align-items: center
     color: white
-    z-index: 2
 
   &__counter
     min-width: 5rem

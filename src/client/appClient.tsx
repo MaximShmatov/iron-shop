@@ -8,7 +8,7 @@ import {App} from './App';
 const url = new URL(`${document.location.origin}/_app_state_`);
 
 const appHydrate = (store: Store) => hydrate(
-  <BrowserRouter>
+  <BrowserRouter forceRefresh={true}>
     <App store={store}/>
   </BrowserRouter>
   , document.getElementById('root')

@@ -1,4 +1,6 @@
+import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
+import {modalWindowSlice} from '../ModalWindow/modalWindowSlice';
 import {Nav} from '../Nav/Nav'
 import {Button} from '../Button/Button';
 import {SearchForm} from '../SearchForm/SearchForm';
@@ -10,6 +12,9 @@ export type THeaderProps = {
 };
 
 export function Header({className}: THeaderProps) {
+  const dispatch = useDispatch();
+  const {setModalWindow} = modalWindowSlice.actions;
+
   return (
     <header className={`${styles.header} ${className}`}>
       <div className={styles.header__wrapper}>
@@ -29,21 +34,20 @@ export function Header({className}: THeaderProps) {
           <Button
             className={styles.header__buttonsItem}
             type={'button'}
-            variant={'transparent'}
+            variant={'texted'}
             icon="&#xebc8;"
             iconPosition={'top'}
-          >
-            Корзина
-          </Button>
+            caption={'Корзина'}
+          />
           <Button
             className={styles.header__buttonsItem}
             type={'button'}
-            variant={'transparent'}
+            variant={'texted'}
             icon="&#xede7;"
             iconPosition={'top'}
-          >
-            Войти
-          </Button>
+            onClick={() => dispatch(setModalWindow('loginForm'))}
+            caption={'Войти'}
+          />
         </div>
         <Nav className={styles.header__nav}/>
       </div>

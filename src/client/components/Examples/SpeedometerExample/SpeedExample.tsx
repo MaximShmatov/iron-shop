@@ -9,9 +9,10 @@ export function SpeedExample() {
 
   return (
     <div className={styles.speedExample}>
-      <Button onClick={() => setCounter(counter + 1)}>
-        Step on the gas!
-      </Button>
+      <Button
+        onClick={() => setCounter(counter + 1)}
+        caption={'Жми на газ !'}
+      />
       <div className={styles.speedExample__speedometer}>
         <Speedometer scaleSize={50} counter={counter}/>
       </div>

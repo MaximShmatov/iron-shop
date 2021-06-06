@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {setIsAuth} from '../../store/authSlice';
 import {Button} from '../../components/Button/Button';
-import {AuthForm} from '../../components/AuthForm/AuthForm';
+import {LoginForm} from '../../components/LoginForm/LoginForm';
 import styles from './Login.module.sass';
 
 
@@ -21,11 +21,10 @@ export default function Login() {
           <Button
             type={'button'}
             onClick={handleButtonClick}
-          >
-            Logout
-          </Button>
+            caption={'Выйти'}
+          />
         ) : (
-          <AuthForm/>
+          <LoginForm/>
         )}
       </div>
     </main>

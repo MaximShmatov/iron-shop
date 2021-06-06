@@ -1,6 +1,6 @@
-import {Button} from '../Button/Button';
-import styles from './ImageSlider.module.sass'
 import {useEffect, useState} from 'react';
+import {Button} from '../Button/Button';
+import styles from './ImageSlider.module.sass';
 
 
 export type THeaderProps = {
@@ -12,6 +12,7 @@ export type THeaderProps = {
 };
 
 export function ImageSlider({images, className}: THeaderProps) {
+  const [isEndTransition, setIsEndTransition] = useState(true);
   const [topImageIndex, setTopImageIndex] = useState(0);
 
   const leftImageIndex = (topImageIndex === 0) ? images.length - 1 : topImageIndex - 1;
@@ -24,28 +25,40 @@ export function ImageSlider({images, className}: THeaderProps) {
   };
 
   useEffect(() => {
-    const cycleId = setInterval(() => {
-      setTopImageIndex(rightImageIndex);
-    }, 3000);
+    const cycleId = setTimeout(() =>
+      requestAnimationFrame(() => setTopImageIndex(rightImageIndex)), 5000);
     return () => {
       clearInterval(cycleId);
     };
   }, [topImageIndex]);
 
+  const setImageIndex = (index: number) => {
+    if (isEndTransition) {
+      setIsEndTransition(false);
+      setTopImageIndex(index);
+    }
+  };
+
+  const classes = [
+    styles.imageSlider,
+    !!className && className
+  ].filter(Boolean);
+
   return (images.length < 2) ? null : (
-    <div className={`${styles.imageSlider} ${className}`}>
+    <div className={classes.join(' ')}>
       {images.map((item, i) => (
         <img
           className={`${styles.imageSlider__image} ${positionClasses[i] || ''}`}
           {...item}
           key={item.src}
+          onTransitionEnd={() => setIsEndTransition(true)}
         />
       ))}
       <div className={styles.imageSlider__control}>
         <Button
           icon="&#xea57;"
           variant={'bordered'}
-          onClick={() => setTopImageIndex(leftImageIndex)}
+          onClick={() => setImageIndex(leftImageIndex)}
         />
         <span className={styles.imageSlider__counter}>
           {`${topImageIndex + 1}/${images.length}`}
@@ -53,7 +66,7 @@ export function ImageSlider({images, className}: THeaderProps) {
         <Button
           icon="&#xea58;"
           variant={'bordered'}
-          onClick={() => setTopImageIndex(rightImageIndex)}
+          onClick={() => setImageIndex(rightImageIndex)}
         />
       </div>
     </div>

@@ -1,26 +1,27 @@
+import {SyntheticEvent} from 'react';
 import styles from './Button.module.sass';
 
 
 type TFlexDirection = 'column' | 'column-reverse' | 'row' | 'row-reverse';
 type TIconPosition = 'left' | 'right' | 'top' | 'bottom';
 type TType = 'button' | 'submit' | 'reset';
-type TVariant = 'transparent' | 'filled' | 'bordered' | 'borderedDown';
+type TVariant = 'texted' | 'filled' | 'bordered';
 
 export type TButtonProps = {
+  name?: string;
   type?: TType;
   variant?: TVariant;
-  children?: string;
-  onClick?: () => void;
+  caption?: string;
+  onClick?: (event: SyntheticEvent) => void;
   icon?: string;
   iconPosition?: TIconPosition;
   className?: string;
 };
 
 const variants: Record<TVariant, string> = {
-  transparent: styles.button_variant_transparent,
+  texted: styles.button_variant_texted,
   filled: styles.button_variant_filled,
   bordered: styles.button_variant_bordered,
-  borderedDown: styles.button_variant_borderedDown,
 };
 const direction: Record<TIconPosition, TFlexDirection> = {
   top: styles.button_position_top,
@@ -30,21 +31,27 @@ const direction: Record<TIconPosition, TFlexDirection> = {
 };
 
 export function Button(props: TButtonProps) {
-  const {type, children, onClick, variant = 'filled', icon, iconPosition = 'left', className} = props;
+  const {
+    name, type, onClick, icon, className, caption,
+    variant = 'filled',
+    iconPosition = 'left'
+  } = props;
+  const buttonProps = {name, type, onClick};
 
-  const classes = styles.button
-    + ' ' + direction[iconPosition]
-    + ' ' + variants[variant]
-    + ' ' + className;
+  const classes = [
+    styles.button,
+    direction[iconPosition],
+    variants[variant],
+    !!className && className,
+  ].filter(Boolean);
 
   return (
     <button
-      className={classes}
-      type={type}
-      onClick={onClick}
+      className={classes.join(' ')}
+      {...buttonProps}
     >
       {icon && <span className={styles.button__icon}>{icon}</span>}
-      {children}
+      {caption}
     </button>
   );
 }

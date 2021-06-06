@@ -1,0 +1,57 @@
+.textInput
+  font: inherit
+  width: 100%
+  padding: 1rem
+  text-overflow: ellipsis
+  border: 1px solid #2b2b2b88
+  color: #2b2b2b88
+  border-radius: .3rem
+
+  @mixin placeholder
+    color: #8aa78a
+    font-size: 1.8rem
+    font-style: italic
+    text-align: center
+    text-overflow: ellipsis
+
+  @mixin placeholder-focus
+    color: transparent
+
+  @mixin placeholder-hover
+    color: #1a5e1a
+
+  &::-webkit-input-placeholder
+    @include placeholder
+  &::-moz-placeholder
+    @include placeholder
+  &:-moz-placeholder
+    @include placeholder
+  &:-ms-input-placeholder
+    @include placeholder
+
+
+  &:hover
+    box-shadow: 0 0 3px #2aff2a
+
+    &::-webkit-input-placeholder
+      @include placeholder-hover
+    &::-moz-placeholder
+      @include placeholder-hover
+    &:-moz-placeholder
+      @include placeholder-hover
+    &:-ms-input-placeholder
+      @include placeholder-hover
+
+  &:focus
+    box-shadow: none
+    border-color: #2b2b2b
+    color: #2b2b2b
+
+    &::-webkit-input-placeholder
+      @include placeholder-focus
+    &::-moz-placeholder
+      @include placeholder-focus
+    &:-moz-placeholder
+      @include placeholder-focus
+    &:-ms-input-placeholder
+      @include placeholder-focus

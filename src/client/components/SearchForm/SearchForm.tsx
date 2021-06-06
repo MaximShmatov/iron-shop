@@ -38,7 +38,7 @@ export function SearchForm({placeholder, className, onSubmit}: TSearchFormProps)
       />
       <Button
         className={styles.searchForm__button}
-        variant={'transparent'}
+        variant={'texted'}
         type={'submit'}
         icon="&#xec15;"
       />

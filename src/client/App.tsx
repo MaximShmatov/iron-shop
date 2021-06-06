@@ -10,10 +10,12 @@ import Examples from './pages/Examples/Examples';
 import {routes} from './routes/routes';
 
 import {Snackbar} from './components/Snackbar/Snackbar';
+import {ModalWindow} from './components/ModalWindow/ModalWindow';
 import {Header} from './components/Header/Header';
 import {Footer} from './components/Footer/Footer';
 import {Switcher} from './routes/Switcher';
 import './App.sass';
+
 
 const pages = {
   index: <Index/>,
@@ -28,8 +30,12 @@ export function App({store}: { store: Store }) {
     <StrictMode>
       <Provider store={store}>
         <Snackbar/>
+        <ModalWindow/>
         <Header/>
-        <Switcher routes={routes} components={pages}/>
+        <Switcher
+          routes={routes}
+          components={pages}
+        />
         <Footer/>
       </Provider>
     </StrictMode>
