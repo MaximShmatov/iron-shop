@@ -6,7 +6,7 @@ import {Checkbox} from '../Checkbox/Checkbox';
 
 
 export type TNavProps = {
-  className: string;
+  className?: string;
 };
 
 export function Nav({className}: TNavProps) {
