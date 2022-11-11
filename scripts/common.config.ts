@@ -9,7 +9,7 @@ const commonConfig = {
   },
 };
 
-function printStats(err?: Error, stats?: Stats | MultiStats) {
+function printStats(err?: Error | null, stats?: Stats | MultiStats) {
   if (err) {
     console.error(err.stack || err);
     return;

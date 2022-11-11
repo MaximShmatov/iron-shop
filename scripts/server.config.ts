@@ -16,15 +16,16 @@ export function getConfig(mode: string) {
       ].filter(Boolean),
     },
     output: {
+      chunkFormat: 'commonjs',
       path: resolve('build'),
       filename: '[name].js',
       clean: true,
     },
     target: 'node',
     externalsPresets: {node: true},
-    experiments: {
-      outputModule: true,
-    },
+    // experiments: {
+    //   outputModule: true,
+    // },
     module: {
       rules: [
         {
